@@ -147,7 +147,10 @@ bootp(sock, flag)
 		bp->bp_vend[7] = TAG_CLASSID;
 		bp->bp_vend[8] = 9;
 		bcopy("PXEClient", &bp->bp_vend[9], 9);
-		bp->bp_vend[18] = TAG_END;
+		bp->bp_vend[18] = TAG_USER_CLASSID;
+		bp->bp_vend[19] = 7;
+		bcopy("FreeBSD", &bp->bp_vend[20], 7);
+		bp->bp_vend[27] = TAG_END;
 	} else
 		bp->bp_vend[7] = TAG_END;
 #else
@@ -190,7 +193,10 @@ bootp(sock, flag)
 			bp->bp_vend[25] = TAG_CLASSID;
 			bp->bp_vend[26] = 9;
 			bcopy("PXEClient", &bp->bp_vend[27], 9);
-			bp->bp_vend[36] = TAG_END;
+			bp->bp_vend[36] = TAG_USER_CLASSID;
+			bp->bp_vend[37] = 7;
+			bcopy("FreeBSD", &bp->bp_vend[38], 7);
+			bp->bp_vend[45] = TAG_END;
 		} else
 			bp->bp_vend[25] = TAG_END;
 
